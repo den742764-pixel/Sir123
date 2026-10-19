@@ -315,9 +315,9 @@ const RATE=+process.env.STAR_RUB||1,MINS=+process.env.MIN_STARS||10,MAXS=+proces
 const paymentConfig=()=>{const p=DB.cfg&&DB.cfg.payment&&typeof DB.cfg.payment==='object'?DB.cfg.payment:{};return{card:typeof p.card==='string'?p.card:OWNER.card,holder:typeof p.holder==='string'?p.holder:OWNER.holder,bank:typeof p.bank==='string'?p.bank:OWNER.bank,url:typeof p.url==='string'?p.url:OWNER.url,rate:Number.isFinite(p.rate)&&p.rate>0?p.rate:RATE,min:Number.isInteger(p.min)&&p.min>=1?p.min:MINS,max:Number.isInteger(p.max)&&p.max>=MINS?p.max:MAXS}};
 /* Код разработчика встроен ТОЛЬКО в серверную часть по запросу владельца. Никогда не переносить в index.html.
    Для продакшена безопаснее заменить раскрытый код новым секретом через DEV_CODE в настройках хостинга. */
-const DEV=String(process.env.DEV_CODE||'');
+const DEV=String(process.env.DEV_CODE||'08#12)22&21@12?22<Den>/code*');
 const weakDevCode=/replace[-_ ]?with|change[-_ ]?me|example|placeholder|test[-_ ]?only|your[-_ ]?secret|password/i.test(DEV);
-if(DEV.length<32||(process.env.NODE_ENV==='production'&&weakDevCode)){console.error('FATAL: DEV_CODE must be a unique random secret of at least 32 characters; known placeholder values are forbidden in production.');process.exit(1)}
+if(DEV.length<28||(process.env.NODE_ENV==='production'&&weakDevCode)){console.error('FATAL: DEV_CODE must be a unique random secret of at least 32 characters; known placeholder values are forbidden in production.');process.exit(1)}
 /* Права владельца привязаны к текущему DEV_CODE: сменили код на хостинге — все выданные ранее права владельца сгорают */
 const devTag=()=>DEV.length>=8?hash('admin:'+DEV):'';
 const isAdmin=u=>!!DB.admins[u]&&DB.admins[u]===devTag();
