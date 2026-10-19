@@ -1,0 +1,16 @@
+{
+  "name": "sirius-server",
+  "version": "1.21.0",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node security-smoke-test.js && node crypto-regression-test.js && node security-key-verification-test.js && node security-session-expiry-test.js && node security-session-idle-test.js && node security-session-renewal-test.js && node security-proxy-test.js && node security-profile-privacy-test.js && node security-sse-ip-limit-test.js && node security-tcp-connection-limit-test.js && node runtime-smoke-test.js && node payment-settings-test.js && node premium-bots-test.js && node profile-media-presets-test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "redis": "^4.7.0"
+  }
+}
